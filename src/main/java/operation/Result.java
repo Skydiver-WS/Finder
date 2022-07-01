@@ -1,5 +1,3 @@
-package operation;
-
 public class Result {
   protected static void result(String uri, String findFile) {
     long start = System.currentTimeMillis();

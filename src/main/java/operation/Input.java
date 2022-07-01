@@ -1,16 +1,15 @@
-package operation;
-
 import java.util.Scanner;
 
 public class Input {
   private static final Scanner SCANNER = new Scanner(System.in);
   public static void input(){
-    String uri = inputPath();
+
+    String uri = CP1251ToUtf8.text(inputPath());
     if(uri.equals("exit")){
       System.exit(0);
     }
     while (true) {
-      String findFile = find();
+      String findFile = CP1251ToUtf8.text(find());
       switch (findFile) {
         default:
           Result.result(uri, findFile);
