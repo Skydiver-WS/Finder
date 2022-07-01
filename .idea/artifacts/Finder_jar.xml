@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" build-on-make="true" name="Finder:jar">
-    <output-path>$PROJECT_DIR$/../..</output-path>
+    <output-path>$PROJECT_DIR$/ResultFile</output-path>
     <root id="archive" name="Finder.jar">
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />

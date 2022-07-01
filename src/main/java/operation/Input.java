@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Input {
   private static final Scanner SCANNER = new Scanner(System.in);
   public static void input(){
-
     String uri = CP1251ToUtf8.text(inputPath());
     if(uri.equals("exit")){
       System.exit(0);
@@ -29,7 +28,7 @@ public class Input {
   }
 
   private static String find() {
-    System.out.println("Введите что найти.");
+    System.out.println("Введите что найти или q для перехода на уровень выше.");
     return Input.SCANNER.nextLine().trim();
   }
 }
