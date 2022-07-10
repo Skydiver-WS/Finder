@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+com.finder.test.Main-Class: com.finder.test.Main
+
