@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"FindFileAndFolder"},{"p":"<Unnamed>","l":"Input"},{"p":"<Unnamed>","l":"Main"},{"p":"<Unnamed>","l":"OpenResult"},{"p":"<Unnamed>","l":"Result"}];updateSearchResults();
