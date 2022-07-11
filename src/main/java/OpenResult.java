@@ -7,7 +7,7 @@ public class OpenResult {
     Desktop desktop = Desktop.getDesktop();
     boolean trigger = true;
     while (trigger) {
-      System.out.println("Введите номер списка для открытия или введите \"q\" для выхода:");
+      System.out.println("Введите номер списка для открытия или введите \"q\" для выхода и нажмите Enter:");
       String code = SCANNER.nextLine().trim();
       switch (code) {
         case("new"):

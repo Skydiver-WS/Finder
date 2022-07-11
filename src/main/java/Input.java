@@ -23,12 +23,12 @@ public class Input {
     }
   }
   private static String inputPath() {
-    System.out.println("Введите путь предполагаемого расположения файла в формате (C:\\Users\\DNS\\Desktop)");
+    System.out.println("Введите путь предполагаемого расположения файла в формате (C:\\Users\\DNS\\Desktop) и нажмите Enter.");
     return Input.SCANNER.nextLine().trim();
   }
 
   private static String find() {
-    System.out.println("Введите что найти или q для перехода на уровень выше.");
+    System.out.println("Введите что найти или q для перехода на уровень выше и нажмите Enter.");
     return Input.SCANNER.nextLine().trim();
   }
 }
