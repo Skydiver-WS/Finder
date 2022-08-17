@@ -1,19 +1,35 @@
 public class Result {
-  protected static void result(String uri, String findFile) {
-    long start = System.currentTimeMillis();
-    FindFileAndFolder findFileAndFolder = new FindFileAndFolder(uri, findFile);
-    for (int i = 0; i < findFileAndFolder.getListResultFinder().size(); i++) {
-      System.out.println(i + " - " + findFileAndFolder.getListResultFinder().get(i) + "\n"
-        + "---------------------------------------------------------------------------------------------------------------------------------------------------");
+    private static FindFileAndFolder findFileAndFolder;
+
+
+    private static Long result;
+
+    public static FindFileAndFolder getFindFileAndFolder() {
+        return findFileAndFolder;
     }
-    long end = System.currentTimeMillis();
-    float result = end - start;
-    System.out.println("По запросу найдено: " + findFileAndFolder.getListResultFinder().size() + " файлов\n" +
-      "Время выполнения запроса составило: " + result + " мс");
-    if (findFileAndFolder.getListResultFinder().isEmpty()) {
-      System.out.println("Результат поиска пуст.");
-    } else {
-      OpenResult.open(findFileAndFolder);
+
+    public static Long getResult() {
+        return result;
     }
-  }
+
+    public static void result(String uri, String findFile) {
+        printResult(uri, findFile);
+        Text.resultClassLeadTime();
+        if (findFileAndFolder.getListResultFinder().isEmpty()) {
+            Text.resultClassListEmpty();
+        } else {
+            OpenResult openResult = new OpenResult();
+            openResult.open(findFileAndFolder);
+        }
+    }
+
+    public static void printResult(String uri, String findFile) {
+        long start = System.currentTimeMillis();
+        findFileAndFolder = new FindFileAndFolder(uri, findFile);
+        for (int i = 0; i < findFileAndFolder.getListResultFinder().size(); i++) {
+            Text.resultClassOutput(i);
+        }
+        long end = System.currentTimeMillis();
+        result = end - start;
+    }
 }
