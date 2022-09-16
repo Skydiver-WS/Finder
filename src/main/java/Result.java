@@ -1,9 +1,8 @@
+import java.util.ArrayList;
+
 public class Result {
     private static FindFileAndFolder findFileAndFolder;
-
-
     private static Long result;
-
     public static FindFileAndFolder getFindFileAndFolder() {
         return findFileAndFolder;
     }
@@ -12,22 +11,24 @@ public class Result {
         return result;
     }
 
-    public static void result(String uri, String findFile) {
+    public static void result(ArrayList<String> uri, String findFile) {
         printResult(uri, findFile);
-        Text.resultClassLeadTime();
-        if (findFileAndFolder.getListResultFinder().isEmpty()) {
-            Text.resultClassListEmpty();
+        Messages.resultClassLeadTime();
+        if (FindFileAndFolder.getListResultFinder().isEmpty()) {
+            Messages.resultClassListEmpty();
         } else {
             OpenResult openResult = new OpenResult();
             openResult.open(findFileAndFolder);
         }
     }
 
-    public static void printResult(String uri, String findFile) {
+    public static void printResult(ArrayList<String> uri, String findFile) {
         long start = System.currentTimeMillis();
-        findFileAndFolder = new FindFileAndFolder(uri, findFile);
-        for (int i = 0; i < findFileAndFolder.getListResultFinder().size(); i++) {
-            Text.resultClassOutput(i);
+        for (String oneUri:uri) {
+            findFileAndFolder = new FindFileAndFolder(oneUri, findFile);
+        }
+        for (int i = 0; i < FindFileAndFolder.getListResultFinder().size(); i++) {
+            Messages.resultClassOutput(i);
         }
         long end = System.currentTimeMillis();
         result = end - start;

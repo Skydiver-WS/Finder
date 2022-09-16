@@ -8,47 +8,31 @@ import java.util.regex.Pattern;
 
 public class FindFileAndFolder {
     private final String FIND_FILE;
-    private final ArrayList<File> LIST_RESULT_FINDER = new ArrayList();
 
-    protected FindFileAndFolder(String uri, String findFile) {
+
+
+    private static final ArrayList<File> LIST_RESULT_FINDER = new ArrayList();
+
+    public FindFileAndFolder(String uri, String findFile) {
         FIND_FILE = findFile;
         findInFile(uri);
     }
 
     private void findInFile(String uri) {
-        File file = new File(uri);
-        File[] listFiles = file.listFiles();
-//        try {
-//            List<Path> test = Files.walk(Path.of(uri)).toList();
-//            for (Path object : test) {
-//                if (getMatcher(object.toString())) {
-//                    addResult(object.toFile());
-//                }
-//            }
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//        }
-
         try {
-            for (File list : Objects.requireNonNull(listFiles)) {
-                if (getMatcher(list.getName())) {
-                    addResult(list);
-                } else if (list.isDirectory()) {
-                    findInFile(list.getPath());
+            List<Path> listPath = Files.walk(Path.of(uri)).toList();
+            for (Path path : listPath) {
+                if (getMatcher(path.getFileName().toString())) {
+                    addResult(path.toFile());
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 
-    private void addResult(File result) { //добавление результатов в массив
-        if (result.isFile()) {
-            LIST_RESULT_FINDER.add(result);
-        } else {
-            findInFile(result.getPath());
-            LIST_RESULT_FINDER.add(result);
-        }
+    private void addResult(File result) {
+        LIST_RESULT_FINDER.add(result);
     }
 
     private boolean getMatcher(String directory) {
@@ -57,7 +41,7 @@ public class FindFileAndFolder {
         return matcher.find();
     }
 
-    public ArrayList<File> getListResultFinder() {
+    public static ArrayList<File> getListResultFinder() {
         return LIST_RESULT_FINDER;
     }
 }
